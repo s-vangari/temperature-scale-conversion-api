@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": ["ES2020"],
+        "module": "commonjs",
+        "target": "ES2020",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "noImplicitUseStrict": true,
+        "noImplicitAny": true, 
+        "sourceMap": true
+    },
+    "exclude": [
+        "tests",
+        ".vscode",
+        ".serverless",
+        ".git",
+        "node_modules",
+        "dist",
+        "doc"
+
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false,
+}

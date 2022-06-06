@@ -1,0 +1,84 @@
+openapi: 3.0.0  
+info:
+  title: Temperature scale conversion API 
+  description: APIs to convert Temperature scale formats
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/
+    description: Local Deployment
+  - url: https://rs2o17wzdi.execute-api.ap-northeast-1.amazonaws.com/
+    description: API Gateway endpoint
+
+paths:
+  /api/convert:
+    post:
+      summary: Convert Celcius to Farenheit and vice versa.
+      description: API to convert Temperature scale Celcius to Farenheit and vice versa.
+      requestBody:
+        content:
+          application/json:    # Media type
+            schema:            # Request body contents
+              $ref: '#/components/schemas/ScaleConversionWithOperationRequest' 
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScaleConversionResponse'
+  /api/convert/celcius:
+    post:
+      summary: Convert Celcius to Farenheit
+      description: API to convert Temperature Celcius to Farenheit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScaleConversionRequest' 
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScaleConversionResponse'
+  /api/convert/farenheit:
+    post:
+      summary: Convert Farenheit to Celcius
+      description: API to convert Temperature Farenheit to Celcius
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScaleConversionRequest' 
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScaleConversionResponse'                                    
+components:
+  schemas:
+    ScaleConversionRequest:
+      properties:
+        value:
+          type: integer
+          example: -40     
+    ScaleConversionWithOperationRequest:
+      properties:
+        cast:
+          type: string
+          example: CtoF
+        value:
+          type: integer
+          example: -40
+    ScaleConversionResponse:
+      properties:
+        scale:
+          type: string
+          example: Farenheit
+        value:
+          type: integer
+          example: -40

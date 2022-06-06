@@ -1,0 +1,36 @@
+service: temp-scale-conv-api
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: ap-northeast-1
+
+plugins:
+  - serverless-bundle
+  - serverless-offline
+
+package:
+  patterns:
+    - "dist/**"
+
+functions:
+  temperature-scale-conversion:
+    handler: dist/handler.handle
+    events:
+      - httpApi:
+          path: /api/convert
+          method: post
+      - httpApi:
+          path: /api/convert/celcius
+          method: post
+      - httpApi:
+          path: /api/convert/farenheit
+          method: post          
+
+custom:
+  bundle:
+    caching: false
+ 
