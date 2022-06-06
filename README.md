@@ -39,7 +39,7 @@ Note : This assumes that you have AWS credentials in config or via env variables
 
 AWS Deploy
 
-## Discussion
+## NOTES
 
 ### Tools Used
 
